@@ -3,8 +3,8 @@ Contributors: Raychan87
 Donate link: https://fototour-und-technik.de
 Tags: security, optimize
 Requires at least: 6.0
-Tested up to: 6.8.2
-Stable tag: 1.0.1
+Tested up to: 6.8.3
+Stable tag: 1.1.0
 Requires PHP: 8.2
 License: GPLv3
 License URI: https://github.com/Raychan87/ft-security-and-optimize/blob/main/LICENSE
@@ -18,6 +18,9 @@ A single admin menu that lets you toggle essential security and performance feat
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 1.1.0 =
+* add: not remove Metadata for thumbnails.
 
 = 1.0.1 = 
 * add: Overview Page

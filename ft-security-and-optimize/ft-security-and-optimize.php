@@ -3,7 +3,7 @@
  * Plugin Name: FotoTechnik - Security und Optimierung
  * Plugin URI:  https://github.com/Raychan87/ft-security-and-optimize
  * Description: Verwaltung von Security‑, Optimierungs‑ und REST‑API‑Einstellungen unter einem eigenen Admin‑Menü.
- * Version:     1.0.1
+ * Version:     1.1.0
  * Author:      Raychan
  * Author URI:  https://Fototour-und-technik.de
  * License:     GPLv3
@@ -259,6 +259,14 @@ function fototechnik_page_optimierung() {
                             <?php checked( ! empty( $opts['disable_embeds'] ) ); ?> />
                     </td>
                 </tr>
+
+                <tr>
+                    <th scope="row"><?php esc_html_e( 'Metadaten nicht löschen bei Thumb', 'ft-security-optimize' ); ?></th>
+                    <td>
+                        <input type="checkbox" name="ftsao_optimize_options[notdelete_meta]" value="1"
+                            <?php checked( ! empty( $opts['notdelete_meta'] ) ); ?> />
+                    </td>
+                </tr>
             </table>
 
             <?php submit_button(); ?>
@@ -363,6 +371,11 @@ function fototechnik_apply_optimierung_settings() {
         remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
         remove_action( 'wp_head', 'wp_oembed_add_host_js' );
     }
+
+     // Metadaten löschen oder aktvieren
+    if ( ! empty( $opts['notdelete_meta'] ) ) {
+        add_filter ('image_strip_meta', false);
+    }
 }
 
 /* Emoji‑Filter */
@@ -385,6 +398,9 @@ function ftsao_disable_embeds_rewrites( $rules ) {
     }
     return $rules;
 }
+
+
+
 
 /* -------------------------------------------------
  * De‑aktivierung – Aufräumen (nur Sub‑Menus entfernen)
